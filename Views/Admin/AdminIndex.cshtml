@@ -1,0 +1,69 @@
+﻿@model HeartDisease.Models.Role
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-sm-12" style="background-color:lavender;"></div>
+
+</div>
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-sm-4">
+            <div class="panel panel-default">
+                <div class="panel-heading"> @Html.ActionLink("Subspecialties", "SubspecIndex", "Admin", routeValues: new { area = string.Empty }, htmlAttributes: new { id = "SubspecIndexLink" })</div>
+                <div class="panel-body"><img src="~/Upload/heart.jpg" class="img-responsive" style="width:100%" alt="Image"></div>
+                <div class="panel-footer">Explore the different sub-specialities in cardiology </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="panel panel-danger">
+                <div class="panel-heading"> @Html.ActionLink("MedicalTopics", "TopicIndex", "Admin", routeValues: new { area = string.Empty }, htmlAttributes: new { id = "TopicIndexLink" })</div>
+                <div class="panel-body"><img src="~/Upload/heart.jpg" class="img-responsive" style="width:100%" alt="Image"></div>
+                <div class="panel-footer">Hot topics and trends in cardiovascular research</div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="panel panel-success">
+                <div class="panel-heading"> @Html.ActionLink("Consulting", "ConsultingIndex", "Admin", routeValues: new { area = string.Empty }, htmlAttributes: new { id = "ConsultingIndexLink" })</div>
+                <div class="panel-body"><img src="~/Upload/heart.jpg" class="img-responsive" style="width:100%" alt="Image"></div>
+                <div class="panel-footer">The role of the cardiology consultant</div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="panel panel-default">
+                <div class="panel-heading"> @Html.ActionLink("diet and food for heart patients", "DietFoodIndex", "Admin", routeValues: new { area = string.Empty }, htmlAttributes: new { id = "DietFoodIndexLink" })</div>
+                <div class="panel-body"><img src="~/Upload/heart.jpg" class="img-responsive" style="width:100%" alt="Image"></div>
+                <div class="panel-footer">Facts about the cardiac diet</div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="panel panel-danger">
+                <div class="panel-heading"> @Html.ActionLink("Heart disease and symptoms", "HDiseaseIndex", "Admin", routeValues: new { area = string.Empty }, htmlAttributes: new { id = "HDiseaseIndexLink" })</div>
+                <div class="panel-body"><img src="~/Upload/heart.jpg" class="img-responsive" style="width:100%" alt="Image"></div>
+                <div class="panel-footer">Heart disease - Symptoms and causes </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="panel panel-info">
+                <div class="panel-heading"><p>Hello @Session["UserName"].ToString() </p></div>
+                <div class="panel-body"><img src="~/Upload/heart.jpg" class="img-responsive" style="width:100%" alt="Image"></div>
+                <div class="panel-footer"> @DateTime.Now.ToString() </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>

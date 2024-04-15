@@ -1,0 +1,87 @@
+﻿@model HeartDisease.Models.MedicalTopic
+
+@{
+    ViewBag.Title = "TopicDetails";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+<h2>TopicDetails</h2>
+
+@using (Html.BeginForm("Index", "Home", FormMethod.Get))
+{
+    <div>
+        <h4>MedicalTopic</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt class="alert-danger">
+                @Html.DisplayNameFor(model => model.Title)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Title) <br /><br />
+            </dd>
+
+            <dt class="alert-danger">
+                Content
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.C_Content_) <br /><br />
+            </dd>
+
+            <dt class="alert-danger">
+                @Html.DisplayNameFor(model => model.Photo)
+            </dt>
+
+            <dd>
+                <img src="data:image/jpeg;base64,@Convert.ToBase64String(Model.Photo)" class="img-responsive" style="width:25%" /> <br /><br />
+
+            </dd>
+
+            <dt class="alert-danger">
+                Num of visitors 
+            </dt>
+
+            <dd>
+           @Html.DisplayFor(model => model.Views) <br /><br />
+            </dd>
+
+            <dt class="alert-danger">
+                @Html.DisplayNameFor(model => model.date)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.date) <br /><br />
+            </dd>
+
+            <dt class="alert-danger">
+                References
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.C_References_) <br /><br />
+            </dd>
+
+            <dt class="alert-danger">
+                @Html.DisplayNameFor(model => model.Subspecialty.Title)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Subspecialty.Title) <br /><br />
+            </dd>
+
+            <dt class="alert-danger">
+                @Html.DisplayNameFor(model => model.User.UserName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.User.UserName) <br /><br />
+            </dd>
+
+        </dl>
+    </div>
+}
+    <p>
+
+        @Html.ActionLink("Back to List", "Index")
+    </p>

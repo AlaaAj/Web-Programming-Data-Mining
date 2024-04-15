@@ -1,0 +1,156 @@
+﻿
+@model HeartDisease.Models.value
+@{
+    ViewBag.Title = "ExpertIndex";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+<h3 class="text-center" style="background-color:orange">Expert Cardiac Consultation System</h3>
+<h4 class="text-center" style="background-color:orange">Check Your Heart By Datamining With Out Doctor</h4>
+<p> </p>
+
+@using (Html.BeginForm("ExpertIndex", "Home", FormMethod.Post))
+{
+    <div class="row">
+        <div class="col-lg-1" style="width:500px">
+
+          
+
+            <table>
+
+                <tr>
+                    <td> Age </td>
+                    <td>
+                        <input type="number" min="1" max="200" onkeypress="return onlyNumberKey(event)" value="@Model.age" id="age" name="age" class="form-control" />
+                    </td>
+
+                </tr>
+
+                <tr>
+                    <td> Chest Pain Type </td>
+                    <td>
+
+
+                        @Html.DropDownListFor(model => model.chest_pain_type,
+              new List<SelectListItem> { new SelectListItem { Value="asympt",Text="asympt"} ,
+                                          new SelectListItem{ Value="atyp_angina",Text="atyp_angina"},
+                                           new SelectListItem{ Value="non_anginal",Text="non_anginal"},
+                                            new SelectListItem{ Value="typ_angina",Text="typ_angina"},
+              },
+              new { @class = "form-control" })
+
+                    </td>
+
+                </tr>
+
+                <tr>
+                    <td> Rest Blood Pressure</td>
+                    <td>
+                        <input type="number" min="92" max="200" onkeypress="return onlyNumberKey(event)" value="@Model.rest_blood_pressure" id="rest_blood_pressure" name="rest_blood_pressure" class="form-control" />
+
+
+                    </td>
+
+                </tr>
+
+                <tr>
+                    <td> Blood Sugar</td>
+                    <td>
+
+                        @Html.DropDownListFor(model => model.blood_sugar,
+                                              new List<SelectListItem> { new SelectListItem { Value="TRUE",Text="TRUE"} ,
+                                                                          new SelectListItem{ Value="FALSE",Text="FALSE"},
+
+                                              },
+                                              new { @class = "form-control" })
+                    </td>
+
+                </tr>
+
+                <tr>
+                    <td>Rest Electro </td>
+                    <td>
+
+                        @Html.DropDownListFor(model => model.rest_electro,
+                     new List<SelectListItem> { new SelectListItem { Value="normal",Text="normal"} ,
+                                                 new SelectListItem{ Value="left_vent_hyper",Text="left_vent_hyper"},
+                                                  new SelectListItem{ Value="st_t_wave_abnormality",Text="st_t_wave_abnormality"},
+                                                   new SelectListItem{ Value="?",Text="?"},
+                     },
+                     new { @class = "form-control" })
+                    </td>
+
+                </tr>
+
+                <tr>
+                    <td>Max Heart Rate </td>
+                    <td>
+                        <input type="number" min="82" max="188" onkeypress="return onlyNumberKey(event)" value="@Model.max_heart_rate" id="max_heart_rate" name="max_heart_rate" class="form-control" />
+
+
+                    </td>
+
+                </tr>
+
+                <tr>
+                    <td>Exercice Angina </td>
+                    <td>
+                        @Html.DropDownListFor(model => model.exercice_angina,
+                      new List<SelectListItem> { new SelectListItem { Value="yes",Text="yes"} ,
+                                                  new SelectListItem{ Value="no",Text="no"},
+                      },
+                      new { @class = "form-control" })
+                    </td>
+
+                </tr>
+
+            </table>
+           
+            <table>
+                <tr>
+                    <button type="submit" class="btn btn-info" id="id3" value="id3" name="calculate">ID3 For Possible Disease</button>
+
+                </tr>
+                <tr>
+                    <button type="submit" class="btn btn-info" id="bayes" value="bayes" name="calculate">BAYES For Possible Disease</button>
+
+                </tr>
+            </table>
+          
+            
+
+            @if (@Model.result == "true")
+            {
+                <label style="font-size:30px; color:red"> <u>  Your Heart Not Good You Should See The Nearest Doctor</u> </label>
+                @*<input type="text" style="color:red" class="card-title" id="result" name="result" value="@Model.result" />*@
+
+            }
+            @if (@Model.result == "false")
+            {
+                <label style="font-size: 30px; color: green">      Your Heart  Good </label>
+
+            }
+        </div>
+
+
+        <div class="col-lg-2"> <img src="~/Content/1.jpg" width="600" height="400" />  </div>
+    </div>
+}
+
+
+
+
+<script type="text/javascript">
+    function onlyNumberKey(evt) {
+        // Only ASCII character in that range allowed
+        var ASCIICode = (evt.which) ? evt.which : evt.keyCode
+        if(evt.)
+        if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))
+            return false;
+        return true;
+    }
+
+   
+
+</script>
+

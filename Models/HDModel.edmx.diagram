@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="59e9655df06743a29cf73b9790f2f44c" Name="Diagram1">
+        <EntityTypeShape EntityType="HDModel.Consulting" Width="1.5" PointX="10.625" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HDModel.MedicalTopic" Width="1.5" PointX="8.125" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HDModel.Role" Width="1.5" PointX="3.875" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HDModel.Subspecialty" Width="1.5" PointX="12.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="HDModel.sysdiagram" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
+        <AssociationConnector Association="HDModel.FK_MedicalTopics_Subspecialties" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="HDModel.User" Width="1.5" PointX="6.875" PointY="0.5" />
+        <AssociationConnector Association="HDModel.FK_Consulting_Users" />
+        <AssociationConnector Association="HDModel.FK_MedicalTopics_Users" />
+        <AssociationConnector Association="HDModel.FK_Users_Roles" />
+        <EntityTypeShape EntityType="HDModel.diet_and_food_for_heart_patient" Width="1.5" PointX="3.625" PointY="2.75" />
+        <EntityTypeShape EntityType="HDModel.Heart_disease_and_symptom" Width="1.5" PointX="3.625" PointY="6.25" />
+        <AssociationConnector Association="HDModel.FK_dietpatients_Users" />
+        <AssociationConnector Association="HDModel.FK_Heartsymptoms_Users" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

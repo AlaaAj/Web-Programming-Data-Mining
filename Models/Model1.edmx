@@ -1,0 +1,853 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="HeartModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Consulting">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar(max)" />
+          <Property Name="Patient age" Type="int" />
+          <Property Name="[Patient Gender" Type="nvarchar" MaxLength="50" />
+          <Property Name="Content" Type="nvarchar(max)" />
+          <Property Name="Answer" Type="nvarchar(max)" />
+          <Property Name="UserID" Type="nvarchar" MaxLength="128" />
+          <Property Name="VId" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'aspnet-HeartDisease.dbo.diet and food for heart patients' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="diet and food for heart patients">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Title" />
+          </Key>
+          <Property Name="ID" Type="bigint" Nullable="false" />
+          <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Content" Type="nvarchar(max)" />
+          <Property Name="File" Type="nvarchar(max)" />
+          <Property Name="Photo" Type="nvarchar(max)" />
+          <Property Name="Date" Type="date" />
+          <Property Name="Views" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="References" Type="nvarchar(max)" />
+          <Property Name="UserID" Type="nvarchar" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="Heart disease and symptoms">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar(max)" />
+          <Property Name="Content" Type="nvarchar(max)" />
+          <Property Name="File" Type="nvarchar(max)" />
+          <Property Name="Photo" Type="nvarchar(max)" />
+          <Property Name="Date" Type="date" />
+          <Property Name="Views" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="References" Type="nvarchar(max)" />
+          <Property Name="UserID" Type="nvarchar" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="Medical_Topic">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" />
+          <Property Name="Content" Type="nvarchar(max)" />
+          <Property Name="File" Type="nvarchar(max)" />
+          <Property Name="Photo" Type="nvarchar(max)" />
+          <Property Name="Views" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="date" Type="date" />
+          <Property Name="UserID" Type="nvarchar" MaxLength="128" />
+          <Property Name="SubspecID" Type="int" />
+        </EntityType>
+        <EntityType Name="Subspecialties">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar(max)" />
+          <Property Name="Photo" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Visitor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Gender" Type="char" MaxLength="10" />
+          <Property Name="Age" Type="int" />
+          <Property Name="Address" Type="nvarchar" MaxLength="50" />
+          <Property Name="ConId" Type="int" />
+          <Property Name="UID" Type="nvarchar" MaxLength="128" />
+        </EntityType>
+        <Association Name="FK_Consulting_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="Consulting" Type="Self.Consulting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Consulting">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Consulting_Visitor">
+          <End Role="Visitor" Type="Self.Visitor" Multiplicity="0..1" />
+          <End Role="Consulting" Type="Self.Consulting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Visitor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Consulting">
+              <PropertyRef Name="VId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_diet and food for heart patients_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="diet and food for heart patients" Type="Self.diet and food for heart patients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="diet and food for heart patients">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Heart disease and symptoms_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="Heart disease and symptoms" Type="Self.Heart disease and symptoms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Heart disease and symptoms">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Medical_Topic_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="Medical_Topic" Type="Self.Medical_Topic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Medical_Topic">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Medical_Topic_Subspecialties">
+          <End Role="Subspecialties" Type="Self.Subspecialties" Multiplicity="0..1" />
+          <End Role="Medical_Topic" Type="Self.Medical_Topic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subspecialties">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Medical_Topic">
+              <PropertyRef Name="SubspecID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Visitor_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="Visitor" Type="Self.Visitor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Visitor">
+              <PropertyRef Name="UID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HeartModelStoreContainer">
+          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Consulting" EntityType="Self.Consulting" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Heart disease and symptoms" EntityType="Self.Heart disease and symptoms" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Medical_Topic" EntityType="Self.Medical_Topic" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Subspecialties" EntityType="Self.Subspecialties" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Visitor" EntityType="Self.Visitor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="diet and food for heart patients" EntityType="Self.diet and food for heart patients" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [diet and food for heart patients].[ID] AS [ID], 
+    [diet and food for heart patients].[Title] AS [Title], 
+    [diet and food for heart patients].[Content] AS [Content], 
+    [diet and food for heart patients].[File] AS [File], 
+    [diet and food for heart patients].[Photo] AS [Photo], 
+    [diet and food for heart patients].[Date] AS [Date], 
+    [diet and food for heart patients].[Views] AS [Views], 
+    [diet and food for heart patients].[References] AS [References], 
+    [diet and food for heart patients].[UserID] AS [UserID]
+    FROM [dbo].[diet and food for heart patients] AS [diet and food for heart patients]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Consulting_AspNetUsers" Association="Self.FK_Consulting_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Consulting" EntitySet="Consulting" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Consulting_Visitor" Association="Self.FK_Consulting_Visitor">
+            <End Role="Visitor" EntitySet="Visitor" />
+            <End Role="Consulting" EntitySet="Consulting" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_diet and food for heart patients_AspNetUsers" Association="Self.FK_diet and food for heart patients_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="diet and food for heart patients" EntitySet="diet and food for heart patients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Heart disease and symptoms_AspNetUsers" Association="Self.FK_Heart disease and symptoms_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Heart disease and symptoms" EntitySet="Heart disease and symptoms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Medical_Topic_AspNetUsers" Association="Self.FK_Medical_Topic_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Medical_Topic" EntitySet="Medical_Topic" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Medical_Topic_Subspecialties" Association="Self.FK_Medical_Topic_Subspecialties">
+            <End Role="Subspecialties" EntitySet="Subspecialties" />
+            <End Role="Medical_Topic" EntitySet="Medical_Topic" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Visitor_AspNetUsers" Association="Self.FK_Visitor_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Visitor" EntitySet="Visitor" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HeartModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogin">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+          <NavigationProperty Name="Consultings" Relationship="Self.FK_Consulting_AspNetUsers" FromRole="AspNetUsers" ToRole="Consulting" />
+          <NavigationProperty Name="diet_and_food_for_heart_patients" Relationship="Self.FK_diet_and_food_for_heart_patients_AspNetUsers" FromRole="AspNetUsers" ToRole="diet_and_food_for_heart_patients" />
+          <NavigationProperty Name="Heart_disease_and_symptoms" Relationship="Self.FK_Heart_disease_and_symptoms_AspNetUsers" FromRole="AspNetUsers" ToRole="Heart_disease_and_symptoms" />
+          <NavigationProperty Name="Medical_Topic" Relationship="Self.FK_Medical_Topic_AspNetUsers" FromRole="AspNetUsers" ToRole="Medical_Topic" />
+          <NavigationProperty Name="Visitors" Relationship="Self.FK_Visitor_AspNetUsers" FromRole="AspNetUsers" ToRole="Visitor" />
+          <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+        </EntityType>
+        <EntityType Name="Consulting">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Patient_age" Type="Int32" />
+          <Property Name="C_Patient_Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="VId" Type="Int32" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_Consulting_AspNetUsers" FromRole="Consulting" ToRole="AspNetUsers" />
+          <NavigationProperty Name="Visitor" Relationship="Self.FK_Consulting_Visitor" FromRole="Consulting" ToRole="Visitor" />
+        </EntityType>
+        <EntityType Name="Heart_disease_and_symptom">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="File" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="Views" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="References" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_Heart_disease_and_symptoms_AspNetUsers" FromRole="Heart_disease_and_symptoms" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="Medical_Topic">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="File" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Views" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="date" Type="DateTime" Precision="0" />
+          <Property Name="UserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="SubspecID" Type="Int32" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_Medical_Topic_AspNetUsers" FromRole="Medical_Topic" ToRole="AspNetUsers" />
+          <NavigationProperty Name="Subspecialty" Relationship="Self.FK_Medical_Topic_Subspecialties" FromRole="Medical_Topic" ToRole="Subspecialties" />
+        </EntityType>
+        <EntityType Name="Subspecialty">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Medical_Topic" Relationship="Self.FK_Medical_Topic_Subspecialties" FromRole="Subspecialties" ToRole="Medical_Topic" />
+        </EntityType>
+        <EntityType Name="Visitor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="Age" Type="Int32" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ConId" Type="Int32" />
+          <Property Name="UID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_Visitor_AspNetUsers" FromRole="Visitor" ToRole="AspNetUsers" />
+          <NavigationProperty Name="Consultings" Relationship="Self.FK_Consulting_Visitor" FromRole="Visitor" ToRole="Consulting" />
+        </EntityType>
+        <EntityType Name="diet_and_food_for_heart_patient">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Title" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="File" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="Views" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="References" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_diet_and_food_for_heart_patients_AspNetUsers" FromRole="diet_and_food_for_heart_patients" ToRole="AspNetUsers" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Consulting_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="0..1" />
+          <End Role="Consulting" Type="Self.Consulting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Consulting">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_diet_and_food_for_heart_patients_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="0..1" />
+          <End Role="diet_and_food_for_heart_patients" Type="Self.diet_and_food_for_heart_patient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="diet_and_food_for_heart_patients">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Heart_disease_and_symptoms_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="0..1" />
+          <End Role="Heart_disease_and_symptoms" Type="Self.Heart_disease_and_symptom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Heart_disease_and_symptoms">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Medical_Topic_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="0..1" />
+          <End Role="Medical_Topic" Type="Self.Medical_Topic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Medical_Topic">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Visitor_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="0..1" />
+          <End Role="Visitor" Type="Self.Visitor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Visitor">
+              <PropertyRef Name="UID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Consulting_Visitor">
+          <End Role="Visitor" Type="Self.Visitor" Multiplicity="0..1" />
+          <End Role="Consulting" Type="Self.Consulting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Visitor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Consulting">
+              <PropertyRef Name="VId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Medical_Topic_Subspecialties">
+          <End Role="Subspecialties" Type="Self.Subspecialty" Multiplicity="0..1" />
+          <End Role="Medical_Topic" Type="Self.Medical_Topic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subspecialties">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Medical_Topic">
+              <PropertyRef Name="SubspecID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="*" />
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="HeartEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
+          <EntitySet Name="Consultings" EntityType="Self.Consulting" />
+          <EntitySet Name="Heart_disease_and_symptoms" EntityType="Self.Heart_disease_and_symptom" />
+          <EntitySet Name="Medical_Topic" EntityType="Self.Medical_Topic" />
+          <EntitySet Name="Subspecialties" EntityType="Self.Subspecialty" />
+          <EntitySet Name="Visitors" EntityType="Self.Visitor" />
+          <EntitySet Name="diet_and_food_for_heart_patients" EntityType="Self.diet_and_food_for_heart_patient" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Consulting_AspNetUsers" Association="Self.FK_Consulting_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Consulting" EntitySet="Consultings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_diet_and_food_for_heart_patients_AspNetUsers" Association="Self.FK_diet_and_food_for_heart_patients_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="diet_and_food_for_heart_patients" EntitySet="diet_and_food_for_heart_patients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Heart_disease_and_symptoms_AspNetUsers" Association="Self.FK_Heart_disease_and_symptoms_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Heart_disease_and_symptoms" EntitySet="Heart_disease_and_symptoms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Medical_Topic_AspNetUsers" Association="Self.FK_Medical_Topic_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Medical_Topic" EntitySet="Medical_Topic" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Visitor_AspNetUsers" Association="Self.FK_Visitor_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Visitor" EntitySet="Visitors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Consulting_Visitor" Association="Self.FK_Consulting_Visitor">
+            <End Role="Visitor" EntitySet="Visitors" />
+            <End Role="Consulting" EntitySet="Consultings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Medical_Topic_Subspecialties" Association="Self.FK_Medical_Topic_Subspecialties">
+            <End Role="Subspecialties" EntitySet="Subspecialties" />
+            <End Role="Medical_Topic" EntitySet="Medical_Topic" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HeartModelStoreContainer" CdmEntityContainer="HeartEntities">
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="HeartModel.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="HeartModel.AspNetRole">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="HeartModel.AspNetUserClaim">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="HeartModel.AspNetUserLogin">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="HeartModel.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Consultings">
+            <EntityTypeMapping TypeName="HeartModel.Consulting">
+              <MappingFragment StoreEntitySet="Consulting">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Patient_age" ColumnName="Patient age" />
+                <ScalarProperty Name="C_Patient_Gender" ColumnName="[Patient Gender" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="Answer" ColumnName="Answer" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="VId" ColumnName="VId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Heart_disease_and_symptoms">
+            <EntityTypeMapping TypeName="HeartModel.Heart_disease_and_symptom">
+              <MappingFragment StoreEntitySet="Heart disease and symptoms">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="File" ColumnName="File" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Views" ColumnName="Views" />
+                <ScalarProperty Name="References" ColumnName="References" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Medical_Topic">
+            <EntityTypeMapping TypeName="HeartModel.Medical_Topic">
+              <MappingFragment StoreEntitySet="Medical_Topic">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="File" ColumnName="File" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Views" ColumnName="Views" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="SubspecID" ColumnName="SubspecID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Subspecialties">
+            <EntityTypeMapping TypeName="HeartModel.Subspecialty">
+              <MappingFragment StoreEntitySet="Subspecialties">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Visitors">
+            <EntityTypeMapping TypeName="HeartModel.Visitor">
+              <MappingFragment StoreEntitySet="Visitor">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="ConId" ColumnName="ConId" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="diet_and_food_for_heart_patients">
+            <EntityTypeMapping TypeName="HeartModel.diet_and_food_for_heart_patient">
+              <MappingFragment StoreEntitySet="diet and food for heart patients">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="File" ColumnName="File" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Views" ColumnName="Views" />
+                <ScalarProperty Name="References" ColumnName="References" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="HeartModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetRoles">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="AspNetUsers">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

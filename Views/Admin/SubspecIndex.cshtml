@@ -1,0 +1,45 @@
+﻿@model IEnumerable<HeartDisease.Models.Subspecialty>
+
+@{
+    ViewBag.Title = "SubspecIndex";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>SubspecIndex</h2>
+
+<p>
+    @Html.ActionLink("Create New", "SubspecCreate")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Photo)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @{
+                var base64 = Convert.ToBase64String(item.Photo);
+                var imgsrc = string.Format("data:image/gif;base64,{0}", base64);
+            }
+
+            <img src="@imgsrc" style="max-width:100px; max-height:100px" />
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "SubspecEdit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "SubspecDetails", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "SubspecDelete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

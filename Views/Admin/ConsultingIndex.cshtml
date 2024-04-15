@@ -1,0 +1,80 @@
+﻿@model IEnumerable<HeartDisease.Models.Consulting>
+
+@{
+    ViewBag.Title = "ConsultingIndex";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div>
+    @Html.ActionLink("Get Replaied consultation", "ConsultingIndex2")
+</div>
+<br />
+
+
+<h2>Consulting Not Replaied</h2>
+
+ 
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+     
+            Patient age
+        </th>
+        <th>
+ 
+            Patient Gender
+        </th>
+        <th>
+            
+            Content
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Answer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.UserName)
+        </th>
+        <th style="width:300px">
+            Configuration panel
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.C_Patient_age_)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.C_Patient_Gender_)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.C_Content_)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Answer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.UserName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "ConsultingEdit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "ConsultingDetails", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "ConsultingDelete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>

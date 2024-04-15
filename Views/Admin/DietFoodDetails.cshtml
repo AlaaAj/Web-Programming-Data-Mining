@@ -1,0 +1,76 @@
+﻿@model HeartDisease.Models.diet_and_food_for_heart_patient
+
+@{
+    ViewBag.Title = "DietFoodDetails";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>DietFoodDetails</h2>
+
+<div>
+    <h4>diet_and_food_for_heart_patient</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.C_Content_)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.C_Content_)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Photo)
+        </dt>
+
+        <dd>
+            <img src="data:image/jpeg;base64,@Convert.ToBase64String(Model.Photo)" style="max-width:100px; max-height:100px" />
+        </dd>
+         
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Views)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Views)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.C_References_)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.C_References_)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.UserName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "DietFoodEdit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "DietFoodIndex")
+</p>

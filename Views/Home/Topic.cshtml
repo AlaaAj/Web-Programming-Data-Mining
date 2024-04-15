@@ -1,0 +1,77 @@
+﻿@using HeartDisease.Models;
+
+@{
+    ViewBag.Title = "Topic";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+<div class="row">
+    <div class="col-sm-12" style="background-color:lavender;"></div>
+
+</div>
+@for (int i = 0; i < ((List<MedicalTopic>)ViewBag.Images).Count; i++)
+{
+    var file = ((List<MedicalTopic>)ViewBag.Images)[i];
+
+    <div class="container">
+        <div class="row">
+
+
+            <div class="col-sm-4">
+                <div class="panel panel-primary" style="width:100% ; height:100%">
+                    <div class="panel-panel alert-success">
+                        @file.Title
+
+                    </div>
+                    <div class="panel-body" style="width:100% ; height:100%">  <img alt="@file.Title" src="data:image/jpeg;base64,@Convert.ToBase64String(file.Photo)" class="img-responsive" /></div>
+                    <div class="panel-group"><i class="fa fa-home" aria-hidden="true" style="color:blue"></i>Date:  @file.date  </div>
+                    <div class="panel-group"><i class="fa fa-home" aria-hidden="true" style="color:blue"></i> publisher:  @file.User.UserName</div>
+                    <div class="panel-info">
+                        <i class="fa fa-pencil" aria-hidden="true" style="color:red"></i>@file.C_Content_ [...]  @Html.ActionLink("See more", "TDetails", new { id = file.Id })
+                    </div>
+                    <div class="panel-footer"><i class="fa fa-eye" aria-hidden="true" style="color:red"></i>@file.Views</div>
+
+                </div>
+            </div>
+
+            @for (int j = i += 1; i < ((List<MedicalTopic>)ViewBag.Images).Count; j++)
+            {
+                file = ((List<MedicalTopic>)ViewBag.Images)[j];
+
+                <div class="col-sm-4">
+                    <div class="panel panel-primary" style="width:100% ; height:100%">
+                        <div class="panel-panel alert-danger">
+                            @file.Title
+
+                        </div>
+                        <div class="panel-body" style="width:100% ; height:100%">  <img alt="@file.Title" src="data:image/jpeg;base64,@Convert.ToBase64String(file.Photo)" class="img-responsive" /></div>
+                        <div class="panel-group"><i class="fa fa-home" aria-hidden="true" style="color:blue"></i>Date:  @file.date  </div>
+                        <div class="panel-group"><i class="fa fa-home" aria-hidden="true" style="color:blue"></i> publisher:  @file.User.UserName</div>
+                        <div class="panel-info"><i class="fa fa-pencil" aria-hidden="true" style="color:red"></i>@file.C_Content_ [...]  @Html.ActionLink("See more", "TDetails", new { id = file.Id })</div>
+                        <div class="panel-footer"><i class="fa fa-eye" aria-hidden="true" style="color:red"></i>@file.Views</div>
+                    </div>
+                </div>break;
+            }
+            @for (int v = i += 1; i < ((List<MedicalTopic>)ViewBag.Images).Count; v++)
+            {
+                file = ((List<MedicalTopic>)ViewBag.Images)[v];
+                <div class="col-sm-4">
+                    <div class="panel panel-primary" style="width:100% ; height:100%">
+                        <div class="panel-panel alert-info">
+                            @file.Title
+
+                        </div>
+                        <div class="panel-body" style="width:100% ; height:100%">  <img alt="@file.Title" src="data:image/jpeg;base64,@Convert.ToBase64String(file.Photo)" class="img-responsive" /></div>
+                        <div class="panel-group"><i class="fa fa-home" aria-hidden="true" style="color:blue"></i>Date:  @file.date  </div>
+                        <div class="panel-group"><i class="fa fa-home" aria-hidden="true" style="color:blue"></i> publisher:  @file.User.UserName</div>
+                        <div class="panel-info"><i class="fa fa-pencil" aria-hidden="true" style="color:red"></i>@file.C_Content_ [...]  @Html.ActionLink("See more", "TDetails", new { id = file.Id })</div>
+                        <div class="panel-footer"><i class="fa fa-eye" aria-hidden="true" style="color:red"></i>@file.Views</div>
+                    </div>
+                </div>break;
+            }
+        </div>
+    </div>
+}
+<br>
+
+<br>
+<br>

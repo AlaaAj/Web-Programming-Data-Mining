@@ -1,0 +1,78 @@
+﻿@model IEnumerable<HeartDisease.Models.MedicalTopic>
+
+@{
+    ViewBag.Title = "TopicIndex";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>TopicIndex</h2>
+
+<p>
+    @Html.ActionLink("Create New", "TopicCreate")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.C_Content_)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Photo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Views)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.C_References_)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Subspecialty.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.UserName)
+        </th>
+        <th >
+            Configuration panel
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.C_Content_)
+        </td>
+        <td>
+            <img src="data:image/jpeg;base64,@Convert.ToBase64String(item.Photo)" style="max-width:100px; max-height:100px" />
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Views)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.C_References_)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Subspecialty.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User.UserName)
+        </td>
+        <td  >
+            @Html.ActionLink("Edit", "TopicEdit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "TopicDetails", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "TopicDelete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

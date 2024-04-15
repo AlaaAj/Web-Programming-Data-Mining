@@ -1,0 +1,213 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HDModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Consulting">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar(max)" />
+    <Property Name="[Patient age]" Type="datetime" />
+    <Property Name="[Patient Gender]" Type="nvarchar" MaxLength="50" />
+    <Property Name="[Content]" Type="nvarchar(max)" />
+    <Property Name="Answer" Type="nvarchar(max)" />
+    <Property Name="date" Type="datetime" />
+    <Property Name="idUser" Type="int" />
+  </EntityType>
+  <EntityType Name="diet and food for heart patients">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar(max)" />
+    <Property Name="[Content]" Type="nvarchar(max)" />
+    <Property Name="Photo" Type="nvarchar(max)" />
+    <Property Name="[File]" Type="nvarchar(max)" />
+    <Property Name="Views" Type="int" />
+    <Property Name="date" Type="datetime" />
+    <Property Name="idUser" Type="int" />
+    <Property Name="[References]" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Heart disease and symptoms">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar(max)" />
+    <Property Name="[Content]" Type="nvarchar(max)" />
+    <Property Name="Photo" Type="nvarchar(max)" />
+    <Property Name="[File]" Type="nvarchar(max)" />
+    <Property Name="Views" Type="int" />
+    <Property Name="date" Type="datetime" />
+    <Property Name="idUser" Type="int" />
+    <Property Name="[References]" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="MedicalTopics">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar(max)" />
+    <Property Name="[Content]" Type="nvarchar(max)" />
+    <Property Name="Photo" Type="varbinary(max)" />
+    <Property Name="Views" Type="int" />
+    <Property Name="date" Type="datetime" />
+    <Property Name="[References]" Type="nvarchar(max)" />
+    <Property Name="idUser" Type="int" />
+    <Property Name="idSubspec" Type="int" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="RoleName" />
+    </Key>
+    <Property Name="RoleId" Type="int" Nullable="false" />
+    <Property Name="RoleName" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Subspecialties">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar(max)" />
+    <Property Name="Photo" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="idUser" />
+    </Key>
+    <Property Name="idUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Gender" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Age" Type="datetime" Nullable="false" />
+    <Property Name="Address" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="RoleName" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Consulting_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Consulting" Type="Self.Consulting" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="idUser" />
+      </Principal>
+      <Dependent Role="Consulting">
+        <PropertyRef Name="idUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dietpatients_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="diet and food for heart patients" Type="Self.diet and food for heart patients" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="idUser" />
+      </Principal>
+      <Dependent Role="diet and food for heart patients">
+        <PropertyRef Name="idUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Heartsymptoms_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Heart disease and symptoms" Type="Self.Heart disease and symptoms" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="idUser" />
+      </Principal>
+      <Dependent Role="Heart disease and symptoms">
+        <PropertyRef Name="idUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MedicalTopics_Subspecialties">
+    <End Role="Subspecialties" Type="Self.Subspecialties" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="MedicalTopics" Type="Self.MedicalTopics" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subspecialties">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MedicalTopics">
+        <PropertyRef Name="idSubspec" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MedicalTopics_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="MedicalTopics" Type="Self.MedicalTopics" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="idUser" />
+      </Principal>
+      <Dependent Role="MedicalTopics">
+        <PropertyRef Name="idUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_Roles">
+    <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+    <End Role="Users" Type="Self.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="RoleName" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="RoleName" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="HDModelStoreContainer">
+    <EntitySet Name="Consulting" EntityType="Self.Consulting" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="diet and food for heart patients" EntityType="Self.diet and food for heart patients" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Heart disease and symptoms" EntityType="Self.Heart disease and symptoms" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MedicalTopics" EntityType="Self.MedicalTopics" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Subspecialties" EntityType="Self.Subspecialties" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Consulting_Users" Association="Self.FK_Consulting_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Consulting" EntitySet="Consulting" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dietpatients_Users" Association="Self.FK_dietpatients_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="diet and food for heart patients" EntitySet="diet and food for heart patients" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Heartsymptoms_Users" Association="Self.FK_Heartsymptoms_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Heart disease and symptoms" EntitySet="Heart disease and symptoms" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MedicalTopics_Subspecialties" Association="Self.FK_MedicalTopics_Subspecialties">
+      <End Role="Subspecialties" EntitySet="Subspecialties" />
+      <End Role="MedicalTopics" EntitySet="MedicalTopics" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MedicalTopics_Users" Association="Self.FK_MedicalTopics_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="MedicalTopics" EntitySet="MedicalTopics" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_Roles" Association="Self.FK_Users_Roles">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

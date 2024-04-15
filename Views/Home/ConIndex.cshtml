@@ -1,0 +1,146 @@
+﻿@model IEnumerable<HeartDisease.Models.Consulting>
+
+@{
+    ViewBag.Title = "ConIndex";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+<h2 style="color:brown">
+    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-file-medical" viewBox="0 0 16 16">
+        <path d="M8.5 4.5a.5.5 0 0 0-1 0v.634l-.549-.317a.5.5 0 1 0-.5.866L7 6l-.549.317a.5.5 0 1 0 .5.866l.549-.317V7.5a.5.5 0 1 0 1 0v-.634l.549.317a.5.5 0 1 0 .5-.866L9 6l.549-.317a.5.5 0 1 0-.5-.866l-.549.317V4.5zM5.5 9a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5zm0 2a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5z" />
+        <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z" />
+    </svg>
+    Consulting for  Visitor : @Session["UserName"].ToString()
+</h2>
+<br />
+
+<div>
+    @Html.ActionLink("Get a consultation", "ConCreate")
+</div>
+<br />
+ 
+<br />
+<br />
+<br />
+<div class="row">
+    <div class="col-sm-12" style="background-color:lavender;"></div>
+
+</div>
+@for (int i = 0; i < Model.Count(); i++)
+{
+    var file = (Model.ToList())[i];
+
+    <div class="container">
+        <div class="row">
+
+
+            <div class="col-sm-4">
+                <div class="panel panel-primary" style="width:100% ; height:100%">
+                    <div class="panel-footer">
+
+                        <div class="panel-primary" style="width:100% ; height:100%"><b> Consulting Title :  @file.Title  </b> </div>
+                    </div>
+                    <div class="panel-body" style="width:100% ; height:100%"><i class="fa fa-shield fa-rotate-270" aria-hidden="true" style="color:blue"></i> Patient Age :  @file.C_Patient_age_  </div>
+                    <div class="panel-body" style="width:100% ; height:100%"><i class="fa fa-shield fa-rotate-270" aria-hidden="true" style="color:blue"></i> Patient Gender :  @file.C_Patient_Gender_ </div>
+                    <div class="panel-body"><i class="fa fa-shield fa-rotate-270" aria-hidden="true" style="color:blue"></i>Date:  @file.date </div>
+                    <div class="panel-body"><i class="fa fa-shield fa-rotate-270" aria-hidden="true" style="color:blue"></i> Consulting Aplicant:  @file.User.UserName</div>
+                    <div class="panel-info"><i class="fa fa-pencil" aria-hidden="true" style="color:red"></i>@file.C_Content_</div>
+                    <div class="panel-footer">
+                  
+                        <a href="#demo" class="btn btn-danger" data-toggle="collapse"> 
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-reply" viewBox="0 0 16 16">
+                                <path d="M6.598 5.013a.144.144 0 0 1 .202.134V6.3a.5.5 0 0 0 .5.5c.667 0 2.013.005 3.3.822.984.624 1.99 1.76 2.595 3.876-1.02-.983-2.185-1.516-3.205-1.799a8.74 8.74 0 0 0-1.921-.306 7.404 7.404 0 0 0-.798.008h-.013l-.005.001h-.001L7.3 9.9l-.05-.498a.5.5 0 0 0-.45.498v1.153c0 .108-.11.176-.202.134L2.614 8.254a.503.503 0 0 0-.042-.028.147.147 0 0 1 0-.252.499.499 0 0 0 .042-.028l3.984-2.933zM7.8 10.386c.068 0 .143.003.223.006.434.02 1.034.086 1.7.271 1.326.368 2.896 1.202 3.94 3.08a.5.5 0 0 0 .933-.305c-.464-3.71-1.886-5.662-3.46-6.66-1.245-.79-2.527-.942-3.336-.971v-.66a1.144 1.144 0 0 0-1.767-.96l-3.994 2.94a1.147 1.147 0 0 0 0 1.946l3.994 2.94a1.144 1.144 0 0 0 1.767-.96v-.667z" />
+                            </svg>
+                        Replay</a>
+                                <div id="demo" class="collapse">
+                                    <i class="fa fa-eye" aria-hidden="true" style="color:red"></i>  @file.Answer
+                                </div>
+                
+                        </div>
+                        <div>
+                            @Html.ActionLink("Edit", "ConEdit", new { id = file.Id }) |
+                            @Html.ActionLink("Details", "ConDetails", new { id = file.Id }) |
+                            @Html.ActionLink("Delete", "ConDelete", new { id = file.Id }) |
+                        </div>
+                    </div>
+            </div>
+
+            @for (int j = i += 1; i < Model.Count(); j++)
+            {
+                file = (Model.ToList())[j];
+
+                <div class="col-sm-4">
+                    <div class="panel panel-primary" style="width:100% ; height:100%">
+                        <div class="panel-footer">
+
+                            <div class="panel-primary" style="width:100% ; height:100%"><b> Consulting Title :  @file.Title  </b> </div>
+                        </div>
+                        <div class="panel-body" style="width:100% ; height:100%"><i class="fa fa-shield fa-rotate-270" aria-hidden="true" style="color:blue"></i> Patient Age :  @file.C_Patient_age_  </div>
+                        <div class="panel-body" style="width:100% ; height:100%"><i class="fa fa-shield fa-rotate-270" aria-hidden="true" style="color:blue"></i> Patient Gender :  @file.C_Patient_Gender_ </div>
+                        <div class="panel-body"><i class="fa fa-shield fa-rotate-270" aria-hidden="true" style="color:blue"></i>Date:  @file.date </div>
+                        <div class="panel-body"><i class="fa fa-shield fa-rotate-270" aria-hidden="true" style="color:blue"></i> Consulting Aplicant:  @file.User.UserName</div>
+                        <div class="panel-info"><i class="fa fa-pencil" aria-hidden="true" style="color:red"></i>@file.C_Content_</div>
+                        <div class="panel-footer">
+
+                            <a href="#demo" class="btn btn-danger" data-toggle="collapse">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-reply" viewBox="0 0 16 16">
+                                    <path d="M6.598 5.013a.144.144 0 0 1 .202.134V6.3a.5.5 0 0 0 .5.5c.667 0 2.013.005 3.3.822.984.624 1.99 1.76 2.595 3.876-1.02-.983-2.185-1.516-3.205-1.799a8.74 8.74 0 0 0-1.921-.306 7.404 7.404 0 0 0-.798.008h-.013l-.005.001h-.001L7.3 9.9l-.05-.498a.5.5 0 0 0-.45.498v1.153c0 .108-.11.176-.202.134L2.614 8.254a.503.503 0 0 0-.042-.028.147.147 0 0 1 0-.252.499.499 0 0 0 .042-.028l3.984-2.933zM7.8 10.386c.068 0 .143.003.223.006.434.02 1.034.086 1.7.271 1.326.368 2.896 1.202 3.94 3.08a.5.5 0 0 0 .933-.305c-.464-3.71-1.886-5.662-3.46-6.66-1.245-.79-2.527-.942-3.336-.971v-.66a1.144 1.144 0 0 0-1.767-.96l-3.994 2.94a1.147 1.147 0 0 0 0 1.946l3.994 2.94a1.144 1.144 0 0 0 1.767-.96v-.667z" />
+                                </svg>
+                                Replay
+                            </a>
+                            <div id="demo" class="collapse">
+                                <i class="fa fa-eye" aria-hidden="true" style="color:red"></i>  @file.Answer
+                            </div>
+
+                        </div>
+                        <div>
+                            @Html.ActionLink("Edit", "ConEdit", new { id = file.Id }) |
+                            @Html.ActionLink("Details", "ConDetails", new { id = file.Id }) |
+                            @Html.ActionLink("Delete", "ConDelete", new { id = file.Id }) |
+                        </div>
+                    </div>
+                </div>break;
+            }
+            @for (int v = i += 1; i < Model.Count(); v++)
+            {
+                file = (Model.ToList())[v];
+                <div class="col-sm-4">
+                    <div class="panel panel-primary" style="width:100% ; height:100%">
+                        <div class="panel-footer">
+
+                            <div class="panel-primary" style="width:100% ; height:100%"><b> Consulting Title :  @file.Title  </b> </div>
+                        </div>
+                        <div class="panel-body" style="width:100% ; height:100%"><i class="fa fa-shield fa-rotate-270" aria-hidden="true" style="color:blue"></i> Patient Age :  @file.C_Patient_age_  </div>
+                        <div class="panel-body" style="width:100% ; height:100%"><i class="fa fa-shield fa-rotate-270" aria-hidden="true" style="color:blue"></i> Patient Gender :  @file.C_Patient_Gender_ </div>
+                        <div class="panel-body"><i class="fa fa-shield fa-rotate-270" aria-hidden="true" style="color:blue"></i>Date:  @file.date </div>
+                        <div class="panel-body"><i class="fa fa-shield fa-rotate-270" aria-hidden="true" style="color:blue"></i> Consulting Aplicant:  @file.User.UserName</div>
+                        <div class="panel-info"><i class="fa fa-pencil" aria-hidden="true" style="color:red"></i>@file.C_Content_</div>
+                        <div class="panel-footer">
+
+                            <a href="#demo" class="btn btn-danger" data-toggle="collapse">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-reply" viewBox="0 0 16 16">
+                                    <path d="M6.598 5.013a.144.144 0 0 1 .202.134V6.3a.5.5 0 0 0 .5.5c.667 0 2.013.005 3.3.822.984.624 1.99 1.76 2.595 3.876-1.02-.983-2.185-1.516-3.205-1.799a8.74 8.74 0 0 0-1.921-.306 7.404 7.404 0 0 0-.798.008h-.013l-.005.001h-.001L7.3 9.9l-.05-.498a.5.5 0 0 0-.45.498v1.153c0 .108-.11.176-.202.134L2.614 8.254a.503.503 0 0 0-.042-.028.147.147 0 0 1 0-.252.499.499 0 0 0 .042-.028l3.984-2.933zM7.8 10.386c.068 0 .143.003.223.006.434.02 1.034.086 1.7.271 1.326.368 2.896 1.202 3.94 3.08a.5.5 0 0 0 .933-.305c-.464-3.71-1.886-5.662-3.46-6.66-1.245-.79-2.527-.942-3.336-.971v-.66a1.144 1.144 0 0 0-1.767-.96l-3.994 2.94a1.147 1.147 0 0 0 0 1.946l3.994 2.94a1.144 1.144 0 0 0 1.767-.96v-.667z" />
+                                </svg>
+                                Replay
+                            </a>
+                            <div id="demo" class="collapse">
+                                <i class="fa fa-eye" aria-hidden="true" style="color:red"></i>  @file.Answer
+                            </div>
+
+                        </div>
+                        <div>
+                            @Html.ActionLink("Edit", "ConEdit", new { id = file.Id }) |
+                            @Html.ActionLink("Details", "ConDetails", new { id = file.Id }) |
+                            @Html.ActionLink("Delete", "ConDelete", new { id = file.Id }) |
+                        </div>
+                    </div>
+                </div>break;
+            }
+        </div>
+    </div>
+}
+<br>
+
+<br>
+<br>
+

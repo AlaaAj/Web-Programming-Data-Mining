@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>2albak</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title</title>
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+
+</head>
+<body>
+
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"><i class="fa fa-stethoscope" style="font-size:24px;color:red"></i>2albak</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "AdminIndex", "Admin", routeValues: new { area = string.Empty }, htmlAttributes: new { id = "IndexLink" })</li>
+                    <li>@Html.ActionLink("Roles", "RoleIndex", "Admin", routeValues: new { area = string.Empty }, htmlAttributes: new { id = "RoleLink" })</li>
+                    <li>@Html.ActionLink("Users", "UserIndex", "Admin", routeValues: new { area = string.Empty }, htmlAttributes: new { id = "UserLink" })</li>
+
+
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+
+
+                    @if (Session["UserName"] != null)
+                    {
+                        <i style="font-size:24px"></i>
+                        <li><a style=" color:red">  Welcome Admin : @Session["UserName"].ToString() </a></li>
+                        //<li>  <a href="@Url.Action("Logout", "Home")" class="btn btn-warning">Logout</a> </li>
+                        <li>@Html.ActionLink("Logout", "AdminLogout", "Admin", routeValues: new { area = string.Empty }, htmlAttributes: new { id = "LogoutLink" })</li>
+                    }
+
+                    else
+                    {
+                        <li>@Html.ActionLink("Register", "AdminRegister", "Admin", routeValues: new { area = string.Empty }, htmlAttributes: new { id = "registerLink" })</li>
+                        <li>@Html.ActionLink("Log in", "AdminLogin", "Admin", routeValues: new { area = string.Empty }, htmlAttributes: new { id = "loginLink" })</li>
+                    }
+
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="jumbotron">
+        <div class="container text-center">
+            <h1>Admin Panel</h1>
+
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            @RenderBody()
+        </div>
+    </div>
+
+
+
+    <footer class="text-center text-white fixed-bottom" style="background-color: #21081a;">
+        <!-- Grid container -->
+        <div class="container p-4"></div>
+        <!-- Grid container -->
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2022 Copyright:
+            <a class="text-white" href="https://localhost:44364/">2albak.com</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
+
+
+    <script src="~/Scripts/jquery-3.6.0.min.js"></script>
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+</body>
+</html>

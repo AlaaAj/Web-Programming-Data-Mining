@@ -1,0 +1,40 @@
+﻿@model IEnumerable<HeartDisease.Models.Role>
+
+@{
+    ViewBag.Title = "RoleIndex";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>RoleIndex</h2>
+
+<p>
+    @Html.ActionLink("Create New", "RoleCreate")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.RoleId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RoleName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.RoleId)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.RoleName)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "RoleEdit", new { id = item.RoleName }) |
+        @Html.ActionLink("Details", "RoleDetails", new { id = item.RoleName }) |
+        @Html.ActionLink("Delete", "RoleDelete", new { id = item.RoleName })
+    </td>
+</tr>
+}
+
+</table>

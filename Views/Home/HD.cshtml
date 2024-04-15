@@ -1,0 +1,58 @@
+﻿@using HeartDisease.Models;
+
+@{
+    ViewBag.Title = "hd";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+<div>
+
+    <img class="fakeimg" src="~/Upload/heart.gif" style="width:100%  " />
+</div>
+@for (int i = 0; i < ((List<Heart_disease_and_symptom>)ViewBag.Images).Count(); i++)
+{
+    var file = ((List<Heart_disease_and_symptom>)ViewBag.Images)[i];
+
+    <div class="container-fluid">
+        <!-- Control the column width, and how they should appear on different devices -->
+        <h2><b> Heart disease and symptom</b></h2><br />
+
+        <div class="row">
+            <div class="col-sm-6">
+                <ul class="list-group">
+                    <li class="list-group-item list-group-item-success">   <h2><b>Title @i :</b>@file.Title</h2></li>
+                    <li class="list-group-item list-group-item-light">  <h5><b>Date :</b>@file.date  | <b> Publisher :</b>  @file.User.UserName</h5></li>
+
+                    <li class="list-group-item list-group-item-warning">  <p><b>Content :</b> @file.C_Content_</p></li>
+                    <li class="list-group-item list-group-item-danger">   <p><b>References :</b> @file.C_References_</p></li>
+
+                </ul>
+            </div>
+            <div class="col-sm-6"><img src="data:image/jpeg;base64,@Convert.ToBase64String(file.Photo)" width="500" height="300" /></div>
+        </div>
+
+        <br /><br />
+
+
+        @for (int j = i += 1; j < ((List<Heart_disease_and_symptom>)ViewBag.Images).Count(); j++)
+        {
+             file = ((List<Heart_disease_and_symptom>)ViewBag.Images)[j];
+
+    <div class="row">
+        <div class="col-sm-6"><img src="data:image/jpeg;base64,@Convert.ToBase64String(file.Photo)" width="500" height="300" /></div>
+        <div class="col-sm-6">
+            <ul class="list-group">
+                <li class="list-group-item list-group-item-success">   <h2><b>Title @j :</b>@file.Title</h2></li>
+                <li class="list-group-item list-group-item-light">  <h5><b>Date :</b>@file.date  | <b> Publisher :</b>  @file.User.UserName</h5></li>
+
+                <li class="list-group-item list-group-item-warning">  <p><b>Content :</b> @file.C_Content_</p></li>
+                <li class="list-group-item list-group-item-danger">   <p><b>References :</b> @file.C_References_</p></li>
+
+            </ul>
+        </div>
+
+    </div>break;
+        }
+        <br /><br />
+    </div>
+}

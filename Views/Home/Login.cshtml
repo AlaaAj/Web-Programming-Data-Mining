@@ -1,0 +1,50 @@
+﻿@using CaptchaMvc.HtmlHelpers
+@using CaptchaMvc;
+
+@model HeartDisease.Models.User
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+<div class="row justify-content-md-center">
+    <div class="col-md-5">
+        @using (Html.BeginForm("Login", "Home", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title"><h3><b>Login</b></h3></div>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        @if (ViewBag.error != null)
+                        {
+                            <span class="badge badge-danger">@ViewBag.error</span>
+                        }
+                    </div>
+                   
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Email)
+                        @Html.TextBoxFor(m => m.Email, "", new { @class = "form-control", @placeholder = "Email" })
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "badge badge-danger" })
+
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Password)
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "badge badge-danger" })
+                    </div>
+                    <div class="form-group">
+                        @Html.Captcha("Try Another", "Enter the text you see above", 3, "Is requierd field", true)
+                        <p class="text-danger">@ViewBag.ErrorMessage</p>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" name="submit" class="btn btn-primary" value="Login" />
+                    </div>
+
+                </div>
+                </div>
+        }
+        </div>
+    </div>

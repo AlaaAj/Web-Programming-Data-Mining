@@ -1,0 +1,27 @@
+﻿@model HeartDisease.Models.Role
+
+@{
+    ViewBag.Title = "RoleDetails";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>RoleDetails</h2>
+
+<div>
+    <h4>Role</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.RoleId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RoleId)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "RoleEdit", new { id = Model.RoleName }) |
+    @Html.ActionLink("Back to List", "RoleIndex")
+</p>

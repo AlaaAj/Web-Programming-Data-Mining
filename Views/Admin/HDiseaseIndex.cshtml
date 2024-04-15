@@ -1,0 +1,72 @@
+﻿@model IEnumerable<HeartDisease.Models.Heart_disease_and_symptom>
+
+@{
+    ViewBag.Title = "HDiseaseIndex";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Heart Disease Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "HDiseaseCreate")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            Content
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Photo)
+        </th>
+       
+        <th>
+            @Html.DisplayNameFor(model => model.Views)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.date)
+        </th>
+        <th>
+            References
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.UserName)
+        </th>
+        <th width="100%" >  configuration panel     </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.C_Content_)
+        </td>
+        <td >
+            <img src="data:image/jpeg;base64,@Convert.ToBase64String(item.Photo)" style="max-width:100px; max-height:100px" />
+        </td>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.Views)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.C_References_)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User.UserName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "HDiseaseEdit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "HDiseaseDetails", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "HDiseaseDelete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

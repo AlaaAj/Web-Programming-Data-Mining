@@ -1,0 +1,35 @@
+﻿@model HeartDisease.Models.Subspecialty
+
+@{
+    ViewBag.Title = "SubspecDetails";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>SubspecDetails</h2>
+
+<div>
+    <h4>Subspecialty</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Photo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Photo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "SubspecEdit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "SubspecIndex")
+</p>

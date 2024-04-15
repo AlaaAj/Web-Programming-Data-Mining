@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1ead7e4ce343400e86e8dd3a801be505" Name="Diagram1">
+        <EntityTypeShape EntityType="HeartModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HeartModel.AspNetRole" Width="1.5" PointX="0.75" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HeartModel.AspNetUserClaim" Width="1.5" PointX="5.25" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HeartModel.AspNetUserLogin" Width="1.5" PointX="5.25" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HeartModel.AspNetUser" Width="1.5" PointX="3" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="HeartModel.Consulting" Width="1.5" PointX="7.5" PointY="16.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HeartModel.Heart_disease_and_symptom" Width="1.5" PointX="5.25" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HeartModel.Medical_Topic" Width="1.5" PointX="8.25" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HeartModel.Subspecialty" Width="1.5" PointX="6" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HeartModel.Visitor" Width="1.5" PointX="5.25" PointY="22.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HeartModel.diet_and_food_for_heart_patient" Width="1.5" PointX="5.25" PointY="25.75" IsExpanded="true" />
+        <AssociationConnector Association="HeartModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="HeartModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="HeartModel.FK_Consulting_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="HeartModel.FK_diet_and_food_for_heart_patients_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="HeartModel.FK_Heart_disease_and_symptoms_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="HeartModel.FK_Medical_Topic_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="HeartModel.FK_Visitor_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="HeartModel.FK_Consulting_Visitor" ManuallyRouted="false" />
+        <AssociationConnector Association="HeartModel.FK_Medical_Topic_Subspecialties" ManuallyRouted="false" />
+        <AssociationConnector Association="HeartModel.AspNetUserRoles" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

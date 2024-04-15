@@ -1,0 +1,222 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Consulting">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="C_Patient_age_" Type="DateTime" Precision="3" />
+    <Property Name="C_Patient_Gender_" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="C_Content_" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="date" Type="DateTime" Precision="3" />
+    <Property Name="idUser" Type="Int32" />
+    <NavigationProperty Name="User" Relationship="HDModel.FK_Consulting_Users" FromRole="Consulting" ToRole="User" />
+  </EntityType>
+  <EntityType Name="MedicalTopic">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="C_Content_" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Views" Type="Int32" />
+    <Property Name="date" Type="DateTime" Precision="3" />
+    <Property Name="C_References_" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="idUser" Type="Int32" />
+    <Property Name="idSubspec" Type="Int32" />
+    <NavigationProperty Name="Subspecialty" Relationship="Self.FK_MedicalTopics_Subspecialties" FromRole="MedicalTopics" ToRole="Subspecialties" />
+    <NavigationProperty Name="User" Relationship="HDModel.FK_MedicalTopics_Users" FromRole="MedicalTopic" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="RoleName" />
+    </Key>
+    <Property Name="RoleId" Type="Int32" Nullable="false" />
+    <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Users" Relationship="HDModel.FK_Users_Roles" FromRole="Role" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Subspecialty">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="MedicalTopics" Relationship="Self.FK_MedicalTopics_Subspecialties" FromRole="Subspecialties" ToRole="MedicalTopics" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_MedicalTopics_Subspecialties">
+    <End Role="Subspecialties" Type="Self.Subspecialty" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="MedicalTopics" Type="Self.MedicalTopic" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subspecialties">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MedicalTopics">
+        <PropertyRef Name="idSubspec" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="HDEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Consultings" EntityType="Self.Consulting" />
+    <EntitySet Name="MedicalTopics" EntityType="Self.MedicalTopic" />
+    <EntitySet Name="Roles" EntityType="Self.Role" />
+    <EntitySet Name="Subspecialties" EntityType="Self.Subspecialty" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <AssociationSet Name="FK_MedicalTopics_Subspecialties" Association="Self.FK_MedicalTopics_Subspecialties">
+      <End Role="Subspecialties" EntitySet="Subspecialties" />
+      <End Role="MedicalTopics" EntitySet="MedicalTopics" />
+    </AssociationSet>
+    <EntitySet Name="Users" EntityType="HDModel.User" />
+    <AssociationSet Name="FK_Consulting_Users" Association="HDModel.FK_Consulting_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Consulting" EntitySet="Consultings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MedicalTopics_Users" Association="HDModel.FK_MedicalTopics_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="MedicalTopic" EntitySet="MedicalTopics" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_Roles" Association="HDModel.FK_Users_Roles">
+      <End Role="Role" EntitySet="Roles" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <EntitySet Name="diet_and_food_for_heart_patients" EntityType="HDModel.diet_and_food_for_heart_patient" />
+    <EntitySet Name="Heart_disease_and_symptoms" EntityType="HDModel.Heart_disease_and_symptom" />
+    <AssociationSet Name="FK_dietpatients_Users" Association="HDModel.FK_dietpatients_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="diet_and_food_for_heart_patient" EntitySet="diet_and_food_for_heart_patients" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Heartsymptoms_Users" Association="HDModel.FK_Heartsymptoms_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Heart_disease_and_symptom" EntitySet="Heart_disease_and_symptoms" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="idUser" />
+    </Key>
+    <Property Name="idUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Gender" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Age" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Address" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RoleName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Consultings" Relationship="HDModel.FK_Consulting_Users" FromRole="User" ToRole="Consulting" />
+    <NavigationProperty Name="MedicalTopics" Relationship="HDModel.FK_MedicalTopics_Users" FromRole="User" ToRole="MedicalTopic" />
+    <NavigationProperty Name="Role" Relationship="HDModel.FK_Users_Roles" FromRole="User" ToRole="Role" />
+    <NavigationProperty Name="diet_and_food_for_heart_patients" Relationship="HDModel.FK_dietpatients_Users" FromRole="User" ToRole="diet_and_food_for_heart_patient" />
+    <NavigationProperty Name="Heart_disease_and_symptoms" Relationship="HDModel.FK_Heartsymptoms_Users" FromRole="User" ToRole="Heart_disease_and_symptom" />
+  </EntityType>
+  <Association Name="FK_Consulting_Users">
+    <End Type="HDModel.User" Role="User" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="HDModel.Consulting" Role="Consulting" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="idUser" />
+      </Principal>
+      <Dependent Role="Consulting">
+        <PropertyRef Name="idUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MedicalTopics_Users">
+    <End Type="HDModel.User" Role="User" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="HDModel.MedicalTopic" Role="MedicalTopic" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="idUser" />
+      </Principal>
+      <Dependent Role="MedicalTopic">
+        <PropertyRef Name="idUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_Roles">
+    <End Type="HDModel.Role" Role="Role" Multiplicity="1" />
+    <End Type="HDModel.User" Role="User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="RoleName" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="RoleName" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="diet_and_food_for_heart_patient">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="C_Content_" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Views" Type="Int32" />
+    <Property Name="date" Type="DateTime" Precision="3" />
+    <Property Name="idUser" Type="Int32" />
+    <Property Name="C_References_" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="User" Relationship="HDModel.FK_dietpatients_Users" FromRole="diet_and_food_for_heart_patient" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Heart_disease_and_symptom">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="C_Content_" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Views" Type="Int32" />
+    <Property Name="date" Type="DateTime" Precision="3" />
+    <Property Name="idUser" Type="Int32" />
+    <Property Name="C_References_" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="User" Relationship="HDModel.FK_Heartsymptoms_Users" FromRole="Heart_disease_and_symptom" ToRole="User" />
+  </EntityType>
+  <Association Name="FK_dietpatients_Users">
+    <End Type="HDModel.User" Role="User" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="HDModel.diet_and_food_for_heart_patient" Role="diet_and_food_for_heart_patient" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="idUser" />
+      </Principal>
+      <Dependent Role="diet_and_food_for_heart_patient">
+        <PropertyRef Name="idUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Heartsymptoms_Users">
+    <End Type="HDModel.User" Role="User" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="HDModel.Heart_disease_and_symptom" Role="Heart_disease_and_symptom" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="idUser" />
+      </Principal>
+      <Dependent Role="Heart_disease_and_symptom">
+        <PropertyRef Name="idUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
